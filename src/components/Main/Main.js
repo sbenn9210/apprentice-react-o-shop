@@ -1,5 +1,4 @@
 import React from 'react';
-import Switch from 'react-bootstrap/esm/Switch';
 import Home from '../../pages/Home';
 import Products from '../../pages/Products';
 import AdminOrders from '../../pages/AdminOrders';
@@ -8,7 +7,7 @@ import Checkout from '../../pages/CheckOut';
 import Orders from '../../pages/Orders';
 import OrderSuccess from '../../pages/OrderSuccess';
 import Shoppingcart from '../../pages/OrderSuccess';
-import { Route } from 'react-router';
+import { Route, Switch } from 'react-router';
 
 function Main() {
   return (
