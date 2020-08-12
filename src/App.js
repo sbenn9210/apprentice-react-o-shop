@@ -1,13 +1,19 @@
 import React from 'react';
+import { Route, Switch } from 'react-router';
+import { PrivateRoute } from './components/Shared/PrivateRoute';
 
-import Header from './components/Header/Header';
-import Main from './components/Main/Main';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Home from './pages/Home';
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Main />
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+        <PrivateRoute path="/" component={Home} />
+      </Switch>
     </div>
   );
 }
