@@ -5,12 +5,12 @@ function Header() {
   const [dropdown, setDropdown] = useState(false);
   return (
     <header>
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <Link class="navbar-brand" href="#">
+      <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <Link className="navbar-brand" to="#">
           O
         </Link>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-toggle="collapse"
           data-target="#navbarsExampleDefault"
@@ -18,31 +18,31 @@ function Header() {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <Link class="nav-link" to="/">
+        <div className="collapse navbar-collapse" id="navbarsExampleDefault">
+          <ul className="navbar-nav mr-auto">
+            <li className="nav-item active">
+              <Link className="nav-link" to="/">
                 Home
-                <span class="sr-only">(current)</span>
+                <span className="sr-only">(current)</span>
               </Link>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <Link
-                class="nav-link disabled"
+                className="nav-link disabled"
                 to="/shoppingcart"
-                tabindex="-1"
+                tabIndex="-1"
                 aria-disabled="true"
               >
                 Shopping Cart
               </Link>
             </li>
-            <li class="nav-item dropdown">
+            <li className="nav-item dropdown">
               <Link
-                class="nav-link dropdown-toggle"
-                href="#"
+                className="nav-link dropdown-toggle"
+                to="#"
                 id="dropdown01"
                 role="button"
                 data-toggle="dropdown"
@@ -53,19 +53,19 @@ function Header() {
                 Dropdown
               </Link>
               <div
-                class={'dropdown-menu ' + (dropdown ? 'show' : '')}
+                className={'dropdown-menu ' + (dropdown ? 'show' : '')}
                 aria-labelledby="dropdown01"
               >
-                <Link class="dropdown-item" to="/orders">
+                <Link className="dropdown-item" to="/orders">
                   My Orders
                 </Link>
-                <Link class="dropdown-item" to="/adminorders">
+                <Link className="dropdown-item" to="/adminorders">
                   Manage Orders
                 </Link>
-                <Link class="dropdown-item" to="/adminproducts">
+                <Link className="dropdown-item" to="/adminproducts">
                   Manage Products
                 </Link>
-                <Link class="dropdown-item" to="">
+                <Link className="dropdown-item" to="">
                   Log Out
                 </Link>
               </div>
