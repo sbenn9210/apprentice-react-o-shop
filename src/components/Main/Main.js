@@ -1,12 +1,12 @@
 import React from 'react';
-import Home from '../../pages/Home';
-import Products from '../../pages/Products';
-import AdminOrders from '../../pages/AdminOrders';
-import AdminProducts from '../../pages/AdminProducts';
-import Checkout from '../../pages/CheckOut';
-import Orders from '../../pages/Orders';
-import OrderSuccess from '../../pages/OrderSuccess';
-import Shoppingcart from '../../pages/OrderSuccess';
+import Home from '../../pages/Home/Home';
+import Products from '../../pages/Products/Products';
+import AdminOrders from '../../pages/Orders/AdminOrders';
+import AdminProducts from '../../pages/Products/AdminProducts';
+import Checkout from '../../pages/Checkout/CheckOut';
+import Orders from '../../pages/Orders/Orders';
+import OrderSuccess from '../../pages/Orders/OrderSuccess';
+import Shoppingcart from '../../pages/Orders/OrderSuccess';
 import { Route, Switch } from 'react-router';
 
 function Main() {
