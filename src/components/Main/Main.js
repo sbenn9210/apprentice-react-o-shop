@@ -1,5 +1,4 @@
 import React from 'react';
-import Home from '../../pages/Home';
 import Products from '../../pages/Products';
 import AdminOrders from '../../pages/AdminOrders';
 import AdminProducts from '../../pages/AdminProducts';
