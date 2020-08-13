@@ -32,7 +32,7 @@ function Header() {
             <li className="nav-item">
               <Link
                 className="nav-link disabled"
-                to="/shoppingcart"
+                to="/cart"
                 tabIndex="-1"
                 aria-disabled="true"
               >
@@ -59,10 +59,10 @@ function Header() {
                 <Link className="dropdown-item" to="/orders">
                   My Orders
                 </Link>
-                <Link className="dropdown-item" to="/adminorders">
+                <Link className="dropdown-item" to="/admin-orders">
                   Manage Orders
                 </Link>
-                <Link className="dropdown-item" to="/adminproducts">
+                <Link className="dropdown-item" to="/admin-products">
                   Manage Products
                 </Link>
                 <Link className="dropdown-item" to="">
