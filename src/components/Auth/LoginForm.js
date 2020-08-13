@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import TextInput from '../shared/text-input';
+
 function LoginForm() {
   const [inputs, setInputs] = useState({
     username: '',
@@ -20,50 +22,44 @@ function LoginForm() {
     setInputs((inputs) => ({ ...inputs, [name]: value }));
   };
 
+  const loginFormData = [
+    {
+      type: 'text',
+      name: 'username',
+      placeholder: 'Username',
+      value: username,
+    },
+    {
+      type: 'password',
+      name: 'password',
+      placeholder: 'Password',
+      value: password,
+    },
+  ];
+
   return (
     <div className="col-lg-4 offset-lg-4">
       <h2>Login</h2>
       <form name="form" onSubmit={onSubmit}>
-        <div className="form-group">
-          <input
-            type="text"
-            name="username"
-            placeholder="Username"
-            value={username}
-            onChange={onChange}
-            className={
-              'form-control' + (submitted && !username ? ' is-invalid' : '')
-            }
-          />
-          {submitted && !username && (
-            <div className="invalid-feedback">username is required</div>
-          )}
-        </div>
-        <div className="form-group">
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={password}
-            onChange={onChange}
-            className={
-              'form-control' + (submitted && !password ? ' is-invalid' : '')
-            }
-          />
-          {submitted && !password && (
-            <div className="invalid-feedback">Password is required</div>
-          )}
-          <div className="form-group">
-            <button
-              className="btn btn-primary"
-              disabled={!username || !password}
-            >
-              Login
-            </button>
-            <Link to="/register" className="btn btn-link">
-              Register
-            </Link>
+        {loginFormData.map((field, index) => (
+          <div className="form-group" key={index}>
+            <TextInput
+              type={field.type}
+              name={field.name}
+              placeholder={field.placeholder}
+              value={field.value}
+              onChange={onChange}
+              submitted={submitted}
+            />
           </div>
+        ))}
+        <div className="form-group">
+          <button className="btn btn-primary" disabled={!username || !password}>
+            Login
+          </button>
+          <Link to="/register" className="btn btn-link">
+            Register
+          </Link>
         </div>
       </form>
     </div>
