@@ -1,12 +1,16 @@
 import React from 'react';
 
-function TextInput() {
+function TextInput(props) {
   return (
     <input
-      type="text"
-      name={name}
-      placeholder={placeholder}
-      className="form-control"
+      type={props.type}
+      name={props.name}
+      placeholder={props.placeholder}
+      value={props.value}
+      className={`form-control ${
+        props.submitted && !props.value ? 'is-invalid' : ''
+      }`}
+      onChange={props.onChange}
     />
   );
 }
