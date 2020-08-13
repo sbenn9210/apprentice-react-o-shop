@@ -1,7 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router';
-import { PrivateRoute } from './components/Shared/PrivateRoute';
 
+import './App.scss';
+import PrivateRoute from './components/shared/private-route';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home';
