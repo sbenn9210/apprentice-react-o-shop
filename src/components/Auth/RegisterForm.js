@@ -1,30 +1,33 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
 import TextInput from '../shared/text-input';
+import { registerActions } from '../../store/register/action';
 
 function RegisterForm() {
   const [inputs, setInputs] = useState({
-    firstname: '',
-    lastname: '',
+    firstName: '',
+    lastName: '',
     username: '',
     password: '',
   });
 
   const [submitted, setSubmitted] = useState(false);
 
-  const { firstname, lastname, username, password } = inputs;
+  const { firstName, lastName, username, password } = inputs;
 
   const registerFormData = [
     {
       type: 'text',
-      name: 'firstname',
+      name: 'firstName',
       placeholder: 'First Name',
-      value: firstname,
+      value: firstName,
     },
     {
       type: 'text',
-      name: 'lastname',
+      name: 'lastName',
       placeholder: 'Last Name',
-      value: lastname,
+      value: lastName,
     },
     {
       type: 'text',
@@ -40,8 +43,17 @@ function RegisterForm() {
     },
   ];
 
-  const onsubmit = () => {
+  const dispatch = useDispatch();
+
+  const onsubmit = (event) => {
+    event.preventDefault();
+
     setSubmitted(true);
+    if ((firstName, lastName, username, password)) {
+      dispatch(
+        registerActions.register(firstName, lastName, username, password)
+      );
+    }
   };
 
   const formChange = (event) => {
