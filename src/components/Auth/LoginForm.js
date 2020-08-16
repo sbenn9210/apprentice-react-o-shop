@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import TextInput from '../shared/text-input';
+import { loginActions } from '../../store/login/action';
 
 function LoginForm() {
   const [inputs, setInputs] = useState({
@@ -13,13 +15,24 @@ function LoginForm() {
 
   const { username, password } = inputs;
 
-  const onSubmit = () => {
-    setSubmitted(true);
-  };
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loginActions.logout());
+  }, [dispatch]);
 
   const onChange = (event) => {
     const { name, value } = event.target;
     setInputs((inputs) => ({ ...inputs, [name]: value }));
+  };
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+
+    setSubmitted(true);
+    if (username && password) {
+      dispatch(loginActions.login(username, password));
+    }
   };
 
   const loginFormData = [
