@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function Header() {
   const [dropdown, setDropdown] = useState(false);
+
+  const fullName = useSelector(
+    (state) => `${state.login.user.firstName} ${state.login.user.lastName}`
+  );
+
   return (
     <header>
       <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
@@ -50,7 +56,7 @@ function Header() {
                 aria-expanded="false"
                 onClick={() => setDropdown(!dropdown)}
               >
-                Dropdown
+                {fullName}
               </Link>
               <div
                 className={'dropdown-menu ' + (dropdown ? 'show' : '')}

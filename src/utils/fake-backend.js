@@ -1,4 +1,3 @@
-// array in local storage for registered users
 let users = JSON.parse(localStorage.getItem('users')) || [];
 
 function configureFakeBackend() {
@@ -8,7 +7,6 @@ function configureFakeBackend() {
     const body = opts.body && JSON.parse(opts.body);
 
     return new Promise((resolve, reject) => {
-      // wrap in timeout to simulate server api call
       setTimeout(handleRoute, 500);
 
       function handleRoute() {
@@ -29,12 +27,13 @@ function configureFakeBackend() {
         }
       }
 
-      // route functions
-
       function authenticate() {
         const { username, password } = body;
+
         const user = users.find(
-          (user) => user.username === username && user.password === password
+          (exampleUser) =>
+            exampleUser.username === username &&
+            exampleUser.password === password
         );
         if (!user) return error('Username or password is incorrect');
         return ok({
@@ -50,10 +49,9 @@ function configureFakeBackend() {
         const user = body;
 
         if (users.find((x) => x.username === user.username)) {
-          return error(`Username  ${user.username} is already taken`);
+          return error(`Username ${user.username} is already taken`);
         }
 
-        // assign user id and a few other properties then save
         user.id = users.length ? Math.max(...users.map((x) => x.id)) + 1 : 1;
         users.push(user);
         localStorage.setItem('users', JSON.stringify(users));
@@ -74,8 +72,6 @@ function configureFakeBackend() {
         localStorage.setItem('users', JSON.stringify(users));
         return ok();
       }
-
-      // helper functions
 
       function ok(body) {
         resolve({

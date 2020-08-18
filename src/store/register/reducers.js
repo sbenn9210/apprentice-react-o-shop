@@ -2,22 +2,19 @@ import actions from './actionTypes';
 
 let user = JSON.parse(localStorage.getItem('user'));
 
-const initialState = user ? { loggedIn: true, user } : {};
+const initialState = user ? { registered: true, user } : {};
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case actions.LOGIN_REQUEST:
+    case actions.REGISTER_REQUEST:
       return {
-        loggingIn: true,
         user: action.user,
       };
-    case actions.LOGIN_SUCCESS:
+    case actions.REGISTER_SUCCESS:
       return {
-        loggedIn: true,
         user: action.user,
       };
-    case actions.LOGIN_FAILURE:
-    case actions.LOGOUT:
+    case actions.REGISTER_FAILURE:
       return {};
     default:
       return state;
