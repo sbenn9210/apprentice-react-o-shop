@@ -71,7 +71,7 @@ function Header() {
                 <Link className="dropdown-item" to="/admin-products">
                   Manage Products
                 </Link>
-                <Link className="dropdown-item" to="">
+                <Link className="dropdown-item" to="/login">
                   Log Out
                 </Link>
               </div>

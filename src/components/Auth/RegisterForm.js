@@ -45,11 +45,11 @@ function RegisterForm() {
 
   const dispatch = useDispatch();
 
-  const onsubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
 
     setSubmitted(true);
-    if ((firstName, lastName, username, password)) {
+    if (firstName && lastName && username && password) {
       dispatch(
         registerActions.register(firstName, lastName, username, password)
       );
@@ -71,7 +71,7 @@ function RegisterForm() {
   return (
     <div className="col-lg-4 offset-lg-4">
       <h2>Register</h2>
-      <form name="form" onSubmit={onsubmit}>
+      <form name="form" onSubmit={handleSubmit}>
         {registerFormData.map((field, index) => (
           <div className="form-group" key={index}>
             <TextInput

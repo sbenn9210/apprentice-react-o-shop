@@ -1,21 +1,21 @@
 import actions from './actionTypes';
 
-let user = JSON.parse(localStorage.getItem('user'));
+const product = {};
 
-const initialState = user ? { registered: true, user } : {};
+const initialState = product ? { isLoading: false, product } : {};
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case actions.REGISTER_REQUEST:
+    case actions.PRODUCT_REQUEST:
       return {
         isLoading: true,
       };
-    case actions.REGISTER_SUCCESS:
+    case actions.PRODUCT_SUCCESS:
       return {
         isLoading: false,
-        user: action.user,
+        product: action.product,
       };
-    case actions.REGISTER_FAILURE:
+    case actions.PRODUCT_FAILURE:
       return {
         isLoading: false,
       };
