@@ -1,5 +1,7 @@
 let users = JSON.parse(localStorage.getItem('users')) || [];
 
+let products = JSON.parse(localStorage.getItem('products')) || [];
+
 function configureFakeBackend() {
   let realFetch = window.fetch;
   window.fetch = function (url, opts) {
@@ -11,6 +13,8 @@ function configureFakeBackend() {
 
       function handleRoute() {
         switch (true) {
+          case url.endsWith('/products/add') && method === 'POST':
+            return addProduct();
           case url.endsWith('/users/authenticate') && method === 'POST':
             return authenticate();
           case url.endsWith('/users/register') && method === 'POST':
@@ -102,6 +106,18 @@ function configureFakeBackend() {
       function idFromUrl() {
         const urlParts = url.split('/');
         return parseInt(urlParts[urlParts.length - 1]);
+      }
+
+      function addProduct() {
+        const product = body;
+        product.id = products.length
+          ? Math.max(...products.map((x) => x.id)) + 1
+          : 1;
+
+        products.push(product);
+        localStorage.setItem('products', JSON.stringify(products));
+
+        return ok();
       }
     });
   };

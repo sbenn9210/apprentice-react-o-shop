@@ -11,6 +11,7 @@ function TextInput(props) {
         props.submitted && !props.value ? 'is-invalid' : ''
       }`}
       onChange={props.onChange}
+      id={props.id}
     />
   );
 }

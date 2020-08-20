@@ -26,7 +26,7 @@ function LoginForm() {
     setInputs((inputs) => ({ ...inputs, [name]: value }));
   };
 
-  const onSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
 
     setSubmitted(true);
@@ -53,7 +53,7 @@ function LoginForm() {
   return (
     <div className="col-lg-4 offset-lg-4">
       <h2>Login</h2>
-      <form name="form" onSubmit={onSubmit}>
+      <form name="form" onSubmit={handleSubmit}>
         {loginFormData.map((field, index) => (
           <div className="form-group" key={index}>
             <TextInput
