@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function AdminProducts() {
   return (
-    <div>
+    <div className="col-lg-8">
       <h1>Admin Products</h1>
       <Link to="/admin-products/new">
         <button className="btn btn-primary">New Product</button>
