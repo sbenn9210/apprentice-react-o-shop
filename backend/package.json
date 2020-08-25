@@ -1,0 +1,13 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {},
+  "author": "Shawn Benny",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.17.0",
+    "graphql": "^15.3.0"
+  }
+}

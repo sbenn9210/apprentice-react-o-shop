@@ -15,6 +15,8 @@ function configureFakeBackend() {
         switch (true) {
           case url.endsWith('/products/add') && method === 'POST':
             return addProduct();
+          case url.endsWith('/products/edit') && method === 'POST':
+            return editProduct();
           case url.endsWith('/users/authenticate') && method === 'POST':
             return authenticate();
           case url.endsWith('/users/register') && method === 'POST':
@@ -118,6 +120,16 @@ function configureFakeBackend() {
         localStorage.setItem('products', JSON.stringify(products));
 
         return ok();
+      }
+      function editProduct() {
+        const updatedProduct = body;
+
+        let updatedProducts = products.map((product) =>
+          product.id === updatedProduct.id ? updatedProduct : product
+        );
+        localStorage.setItem('products', JSON.stringify(updatedProducts));
+
+        return ok(updatedProduct);
       }
     });
   };
