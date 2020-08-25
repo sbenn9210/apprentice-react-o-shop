@@ -6,17 +6,18 @@ export const productsActions = {
   updateProduct,
 };
 
-function getProducts(products) {
+function getProducts() {
   return (dispatch) => {
-    Promise.resolve(dispatch({ type: actionTypes.PRODUCTS_REQUEST })).then(
-      () => {
-        dispatch({ type: actionTypes.PRODUCTS_SUCCESS, products });
-      },
-      (error) => {
-        alert(error);
-        dispatch({ type: actionTypes.PRODUCTS_FAILURE, error });
-      }
-    );
+
+    dispatch({ type: actionTypes.PRODUCTS_REQUEST })
+    productService.getProducts().then( products => {
+      dispatch({ type: actionTypes.PRODUCTS_SUCCESS, products })
+    }, (error) => {
+      alert(error);
+      dispatch({ type: actionTypes.PRODUCTS_FAILURE, error });
+    }
+    )
+   
   };
 }
 

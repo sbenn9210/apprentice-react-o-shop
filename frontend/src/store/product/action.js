@@ -27,8 +27,9 @@ function createProduct(title, price, category, image) {
         }
       )
       .then(() => {
-        const updatedProducts = JSON.parse(localStorage.getItem('products'));
-        dispatch(productsActions.getProducts(updatedProducts));
-      });
+        //TODO: {This needs to be refactored to add a product using the product-form}
+         productService.getProducts()
+      }).then(books => dispatch(productsActions.getProducts(books))
+      )
   };
 }

@@ -5,14 +5,15 @@ import PrivateRoute from './components/shared/private-route';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home';
+import routes from './utils/routes';
 
 function App() {
   return (
     <div className="App">
       <Switch>
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
-        <PrivateRoute path="/" component={Home} />
+        <Route path={routes.login} component={Login} />
+        <Route path={routes.register} component={Register} />
+        <PrivateRoute path={routes.home} component={Home} />
       </Switch>
     </div>
   );

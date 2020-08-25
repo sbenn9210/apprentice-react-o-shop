@@ -1,12 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 import Table from '../components/shared/table';
+import { productService } from '../services/product-service';
+import { productsActions } from '../store/products/action';
 
 function AdminProducts() {
-  const products = useSelector(({ products }) => products.products);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    productService.getProducts().then(books => dispatch(productsActions.getProducts(books)))
+  }, [dispatch])
+
+  let products = useSelector(({products}) => products.products)
+  
   const columns = [
     { header: 'Author', name: 'author' },
     { header: 'Name', name: 'title' },
