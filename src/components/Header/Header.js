@@ -9,6 +9,8 @@ function Header() {
     (state) => `${state.login.user.firstName} ${state.login.user.lastName}`
   );
 
+  const headerClick = () => setDropdown(false);
+
   return (
     <header>
       <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
@@ -62,16 +64,32 @@ function Header() {
                 className={'dropdown-menu ' + (dropdown ? 'show' : '')}
                 aria-labelledby="dropdown01"
               >
-                <Link className="dropdown-item" to="/orders">
+                <Link
+                  className="dropdown-item"
+                  to="/orders"
+                  onClick={headerClick}
+                >
                   My Orders
                 </Link>
-                <Link className="dropdown-item" to="/admin-orders">
+                <Link
+                  className="dropdown-item"
+                  to="/admin-orders"
+                  onClick={headerClick}
+                >
                   Manage Orders
                 </Link>
-                <Link className="dropdown-item" to="/admin-products">
+                <Link
+                  className="dropdown-item"
+                  to="/admin-products"
+                  onClick={headerClick}
+                >
                   Manage Products
                 </Link>
-                <Link className="dropdown-item" to="/login">
+                <Link
+                  className="dropdown-item"
+                  to="/login"
+                  onClick={headerClick}
+                >
                   Log Out
                 </Link>
               </div>
