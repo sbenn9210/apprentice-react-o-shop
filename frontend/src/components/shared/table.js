@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 function Table({ data, columns, editable, editUrl }) {
   const renderRows = (data, columns) => {
     if (data) {
-      return data.map((row) => (
-        <tr key={row.id}>
+      return data.map((row, index) => (
+        <tr key={index}>
           {columns.map((column) => (
             <td key={column.name}>
               {editable && column.name === 'editable' ? (

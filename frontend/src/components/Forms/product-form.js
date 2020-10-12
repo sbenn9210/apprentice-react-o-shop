@@ -68,7 +68,7 @@ function ProductForm(props) {
       let item = products.find((product) => product.id === Number(id));
       setInputs(item);
     }
-  }, []);
+  }, [id, products]);
 
   const productFields = [
     {

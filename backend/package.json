@@ -3,11 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "scripts": {},
+  "scripts": {
+    "build-db": "node src/db/migrate.js"
+  },
   "author": "Shawn Benny",
   "license": "ISC",
   "dependencies": {
     "apollo-server": "^2.17.0",
-    "graphql": "^15.3.0"
+    "dotenv": "^8.2.0",
+    "graphql": "^15.3.0",
+    "pg": "^8.3.3",
+    "sequelize": "^6.3.4",
+    "sequelize-cli": "^6.2.0"
   }
 }
