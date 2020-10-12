@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
 import history from '../../utils/history';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router';
+import { useSelector } from 'react-redux';
 
 import TextInput from '../shared/text-input';
-import { productActions } from '../../store/product/action';
 import ProductCard from '../../pages/product-card';
+import { productActions } from '../../store/product/action';
+import { productsActions } from '../../store/products/action';
 
 function ProductForm(props) {
   const [inputs, setInputs] = useState({
+    id: '',
     title: '',
     price: '',
     category: '',
@@ -25,7 +29,6 @@ function ProductForm(props) {
     { name: 'Fruits', id: 'fruits' },
     { name: 'Dairy', id: 'dairy' },
   ];
-
   const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
@@ -33,8 +36,21 @@ function ProductForm(props) {
 
     if (title && price && category && image) {
       setSubmitted(true);
-      dispatch(productActions.createProduct(title, price, category, image));
       history.push('/admin-products');
+      if (id) {
+        let numberID = Number(id);
+        dispatch(
+          productsActions.updateProduct({
+            id: numberID,
+            title,
+            price,
+            category,
+            image,
+          })
+        );
+      } else {
+        dispatch(productActions.createProduct(title, price, category, image));
+      }
     }
   };
 
@@ -42,6 +58,17 @@ function ProductForm(props) {
     const { name, value } = event.target;
     setInputs({ ...inputs, [name]: value });
   };
+
+  let { id } = useParams();
+
+  let products = useSelector(({ products }) => products.products);
+
+  useEffect(() => {
+    if (id) {
+      let item = products.find((product) => product.id === Number(id));
+      setInputs(item);
+    }
+  }, []);
 
   const productFields = [
     {

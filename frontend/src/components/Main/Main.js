@@ -17,6 +17,11 @@ function Main() {
         <Route exact path="/products" component={Products}></Route>
         <Route exact path="/admin-orders" component={AdminOrders}></Route>
         <Route exact path="/admin-products" component={AdminProducts}></Route>
+        <Route
+          exact
+          path="/admin-products/new/:id"
+          component={AdminProductsNew}
+        />
         <Route exact path="/admin-products/new" component={AdminProductsNew} />
         <Route exact path="/checkout" component={Checkout}></Route>
         <Route exact path="/orders" component={Orders}></Route>
